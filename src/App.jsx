@@ -3,7 +3,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme'
 import Signin from "./pages/Signin";
 import {BrowserRouter, Route, Router, Routes} from 'react-router-dom'
-
+import './mock'
 
 function App() {
   

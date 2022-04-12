@@ -3,7 +3,7 @@ import PostCard from '../../../components/PostCard'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100vh"
+    width: "100vh",
   }
 }))
 
