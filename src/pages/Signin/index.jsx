@@ -9,9 +9,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import {useNavigate} from 'react-router-dom'
-import authService from "../../services/authService";
 import FormHelperText from "@material-ui/core/FormHelperText";
-
+import { useDispatch } from "react-redux";
+import {signIn} from '../../actions/accountActions'
 
 const useStyles = makeStyles((theme) => ({
          root: {
@@ -55,11 +55,13 @@ const useStyles = makeStyles((theme) => ({
         const [password, setPassword] = useState('')
         const [errorMessage, setErrorMessage] = useState()
 
+        const dispatch = useDispatch()
+       
       async function handleSignin() {
             //chamada à API. Se retorno ok, direciona para Home. Se não estiver ok, exige msg para o usuário
          
-         try {
-            await authService.signin(email, password)
+         try { //await
+              dispatch(signIn(email, password))
             //200
             navigate('/')
        

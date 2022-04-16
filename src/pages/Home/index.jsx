@@ -1,10 +1,9 @@
-// import './style.css'
-import Header from './components/Header';
+import Header from './header';
 import { makeStyles } from '@material-ui/core/styles';
-import Feed from './components/Feed';
-import Navbar from './components/Navbar';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
+import NewPost from "../Post/New";
+import Feed from '../Feed';
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import Signin from '../Signin';
 
 
 const useStyles = makeStyles ({
@@ -21,21 +20,21 @@ const useStyles = makeStyles ({
     }
 })
 
-const Home = () => {
+function Home() {
     const classes = useStyles()
 
     return ( 
         <div className={classes.root}>
             <Header />
-            <div className={classes.toolbar}></div>
+            <div className={classes.toolbar} />
             <main className={classes.main}>
-                <Container maxWidth="md">
-                    <Box display="flex">
-                       <Navbar />
-                        <Feed />
 
-                    </Box>
-                </Container>
+                <Routes>
+                    <Route path="/feed" element={<Feed />} />
+                    <Route path="/" element={<Feed />} />
+                    <Route path="/post/new" element={<NewPost />} />
+                    <Route path="*" element={<h1>Not found 404!</h1>} />
+                </Routes> 
             </main>
         </div>
      );
